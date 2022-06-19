@@ -22,14 +22,14 @@ class Music(Cog_Extension):
             await voiceChannel.connect(timeout = 600.0)
             voice = discord.utils.get(self.bot.voice_clients, guild=ctx.guild)
         
-        os.system(f"yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 {url}")
+        os.system(f"yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 --ffmpeg-location ../ffmpeg {url}")
 
         for file in os.listdir("./"):
             if file.endswith(".mp3"):
                 os.rename(file, "song.mp3")
     
-        voice.play(discord.FFmpegPCMAudio(executable = 'ffmpeg.exe', source = "song.mp3"))
-
+        voice.play(discord.FFmpegPCMAudio(executable = 'ffmpeg', source = "song.mp3"))
+    #TODO .exe
     
     @commands.command()
     async def leave(self,ctx):

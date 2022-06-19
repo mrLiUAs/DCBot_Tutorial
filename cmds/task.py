@@ -10,7 +10,7 @@ class Task(Cog_Extension):
         super().__init__(*args)
         #self.peanuts.start()
 
-    '''
+    ''' 
     @tasks.loop(seconds=20.0)
     async def peanuts(self):
 
